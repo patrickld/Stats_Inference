@@ -10,6 +10,20 @@ By using the property of the inverse distribution function: If $U$ is proportion
 
 Thus $F^{−1}$ will also follow the $Uniform[0,1]$ distribution.
 
+(c) Implement this algorithm in R, and use it to generate a 1000 -sample distributed according to $Exp(λ)$. Compare the distribution of the sample to $Exp(λ)$ using a graph.
+
+```{r}
+lambda <- 3
+uniform_sample <- 1000
+U <- runif(uniform_sample, min = 0, max = 1)
+X <- -log(1-U)/lambda
+hist(X, freq=F, xlab="X", main="Distribution using the inverse function")
+hist(rexp(uniform_sample,lambda), freq=F, xlab = "Cauchy Distribution", main="Distribution using the inverse function")
+curve(dexp(x, rate=lambda) , 0, 3, lwd=1, add = T)
+qqplot(qexp(seq(0,1,0.1),lambda),X, xlab="Theoretical Quantiles", ylab="Observed Quantiles", type="o")
+abline(0,1, col="red")
+```
+
 ## Exercise 4 - 
 
 (c) Generalize this estimator to the case of n measurements x1, . . . , xn. Study the asymptotic properties of this estimator: is it strongly consistent? Asymptoti- cally normal? What is its asymptotic variance?
