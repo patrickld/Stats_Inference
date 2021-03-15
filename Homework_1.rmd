@@ -10,6 +10,18 @@ By using the property of the inverse distribution function: If $U$ is proportion
 
 Thus $F^{−1}$ will also follow the $Uniform[0,1]$ distribution.
 
+
+(b) Propose an algorithm to sample from the Exponential distribution $Exp(λ)$ using a sample from the uniform distribution $U(0,1)$.
+
+There are different approaches to sample an Exponential distribution from a $Uniform[0,1]$ distribution 
+1. A sample of size n can be drawn from $Uniform[0,1]$ using runif in R
+2. Using the result of (a) and a sample as argument for the inverse distribution function of the Exponential distribution. 
+
+When $F_Y(y)$ is the cumulative distribution function of the exponential distribution, we have by definition $F_Y(y)=1-exp(-\lambda y)$ if $y≥0$. One can find $F_Y^{-1}(U)=\frac{-1}{\lambda ln(1-U)}$
+
+Assume $Y$ is an exponential random variable with rate parameter $λ = 5$. The probability density
+
+
 (c) Implement this algorithm in R, and use it to generate a 1000 -sample distributed according to $Exp(λ)$. Compare the distribution of the sample to $Exp(λ)$ using a graph.
 
 ```{r}
@@ -24,6 +36,17 @@ qqplot(qexp(seq(0,1,0.1),lambda),X, xlab="Theoretical Quantiles", ylab="Observed
 abline(0,1, col="red")
 ```
 
+(d) Propose an algorithm to sample from a Cauchy distribution using a sample of the uniform distribution $U(0, 1)$. The density function of a Cauchy distribution with parameters $x_0 ∈ R$ and $γ > 0$ is: $f(x) = \frac{γ^2}{πγ(x − x_0)^2 +π γ^3}$
+
+```{r}
+set.seed(120)
+uniform_sample <- 1000
+U <- runif(uniform_sample, min = -pi/2, max = pi/2)
+X <- tan(pi*(U-1/2))
+hist(X, freq=F, xlim = c(-120, 120), breaks = 20, xlab = "X", main="Distribution using the inverse function and Generating Cauchy")
+qqplot(qcauchy(seq(0,1,0.1),lambda),X, xlab="Theoretical Quantiles", ylab="Observed Quantiles", type="o")
+abline(0,1, col="red")
+```
 ## Exercise 4 - 
 
 (c) Generalize this estimator to the case of n measurements x1, . . . , xn. Study the asymptotic properties of this estimator: is it strongly consistent? Asymptoti- cally normal? What is its asymptotic variance?
