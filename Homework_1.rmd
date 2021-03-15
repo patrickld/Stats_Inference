@@ -1,3 +1,17 @@
+## Exercise 3 - Algorithm for simulation
+
+(a) What is the distribution of $F^{−1}(U)$, where $F^{−1}$ is the inverse function of $F$?
+
+Let $F$ be a continuous cumulative distribution function. For any continuous and non-decreasing function $F$ on $ℝ$, the generalized inverse of F is defined by:
+
+$F^{−1}(u) = inf\{x∈ℝ : F(x) ≥ u\}$ with $(0 < u < 1)$ 
+
+By using the property of the inverse distribution function: If $U$ is proportional to $Uniform[0,1]$ distribution, then $F^{−1}(U)$ has $F$ as its CDF, because by applying F to both sides $P(F^{−1}(U) ≤ x) = F(x)$, because $P(U ≤ y) = y$ when $U$ is in a $Uniform[0,1]$ distribution and $P(F^{−1}(U)≤ x) = P( F( F^{-1}(U) ) ≤ F(x) ) = P(U ≤ F(x))$.
+
+Thus $F^{−1}$ will also follow the $Uniform[0,1]$ distribution.
+
+## Exercise 4 - 
+
 (c) Generalize this estimator to the case of n measurements x1, . . . , xn. Study the asymptotic properties of this estimator: is it strongly consistent? Asymptoti- cally normal? What is its asymptotic variance?
 
 In the case of n measurements, the estimator is $\sum_{i=1}^n (\frac{d_i}{n})^2$
