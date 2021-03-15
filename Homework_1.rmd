@@ -1,0 +1,46 @@
+## Exercise 5
+
+
+(a) Load the dataset cider.csv in R.
+
+```{r}
+df1 <- read.csv(file="cider.csv", header = TRUE)
+head(df1)
+```
+
+(b) Represent the distribution of ciders between brut, semi-dry and sweet using a barplot.
+```{r}
+library("ggplot2")
+var1 <- ggplot(data=df1, aes(x = Type))
+var1 + geom_bar(colour = "red", size = 1, alpha= 1, fill = "white") + theme(panel.grid.major = element_line(color="white", size =1), panel.grid.minor = element_blank()) + labs(title="Barplot of the distribution of cider flavors",
+        x ="Cider flavors", y = "Frequency")
+```
+
+(c) Represent the distribution of the sweet flavor using a boxplot, for each type of cider.
+```{r}
+var2  <- ggplot(df1, aes(Type,Sweetness)) + geom_boxplot(color = "red", fill = "white")
+var2 + ggtitle("Boxplot of the distribution of the sweet flavour")
+```
+
+
+(d) Represent the sweet flavor according to the bitter flavor and add the regres- sion line, for each type of cider. Hint: use the functions geom point and geom smooth.
+```{r}
+library(dplyr)
+
+BitterSweet <- ggplot(df1, aes(x = Sweetness, y = Bitterness, color = Type)) + geom_point() + geom_smooth()
+BitterSweet + ggtitle("Overview of the Sweetness according to the Bitterness for all Ciders")
+
+dry <- select(filter(df1, Type == "Dry"), c(Sweetness, Acid, Bitterness, Astringent))
+c_dry <-ggplot(dry, aes(x=Sweetness, y=Bitterness)) + geom_point(size= 2, shape=20, color="red", fill = "red") + geom_smooth(method = "lm", color="black", formula = y ~ x)
+c_dry  + ggtitle("Representation of the Sweetness according to the Bitterness for Dry Ciders")
+
+semi_dry <- select(filter(df1, Type == "Semi-dry"), c(Sweetness, Acid, Bitterness, Astringent))
+c_semi_dry <-ggplot(semi_dry, aes(x=Sweetness, y=Bitterness)) + geom_point(size= 2, shape=20, color="green", fill = "green") + geom_smooth(method = "lm", color="black", formula = y ~ x)
+c_semi_dry  + ggtitle("Representation of the Sweetness according to the Bitterness for Semi-dry Ciders")
+
+
+sweet <- select(filter(df1, Type == "Sweet"), c(Sweetness, Acid, Bitterness, Astringent))
+c_sweet<- ggplot(sweet, aes(x=Sweetness, y=Bitterness)) + geom_point(size= 2, shape=20, color="blue", fill = "blue") + geom_smooth(method = "lm", color="black", formula = y ~ x)
+c_sweet + ggtitle("Representation of the Sweetness according to the Bitterness for Sweet Ciders")
+```
+
