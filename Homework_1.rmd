@@ -108,3 +108,6 @@ c_sweet<- ggplot(sweet, aes(x=Sweetness, y=Bitterness)) + geom_point(size= 2, sh
 c_sweet + ggtitle("Representation of the Sweetness according to the Bitterness for Sweet Ciders")
 ```
 
+(e) Comment your results
+Following the Barplot of the distribution of cider flavours we can see, that the most frequent occurring flavour is the « Dry » flavour by more than half of the appearances. Hence we can characterize the majority of ciders as dry, while only the minority appears to be « Sweet ». The flavour « Sweetness » appears to be more condensed for Sweet Ciders and there is a smaller range of variation, while it has a larger taste-palette due to its larger distribution on the Boxplot. 
+As evidenced by the different plots about the correlation between the the attributes « Sweetness » and « Bitterness » , we can assume that the attributes are negatively correlated. Thus it is shown that these attributes represent the extremes on the scale of cider-flavours. The slope of the regression line decreases when the sample size increases and the points are more condensed for the « Sweet » ciders than for the other two flavours. 
