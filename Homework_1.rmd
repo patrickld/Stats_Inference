@@ -1,3 +1,18 @@
+(c) Generalize this estimator to the case of n measurements x1, . . . , xn. Study the asymptotic properties of this estimator: is it strongly consistent? Asymptoti- cally normal? What is its asymptotic variance?
+
+In the case of n measurements, the estimator is $\sum_{i=1}^n (\frac{d_i}{n})^2$
+
+Using a regulation functional $T(\hat{F})= h(\mathbb{E}(D))= \sum_{i=1}^n (\frac{d_i}{n})^2$ and $D(x)$ and $h(x)$ being continuous and finite,  the Plug-in Estimator $T(\hat{F})$ converges asymptotically to $T(F)$ and the estimator is strongly consistent. 
+
+As $h(x)$ and $\mathbb{E}(D(x))$ are continuous and differentiable in $\mathbb{E}(D(x))$, using the Delta Method theorem, it follows
+
+$v(F) = h'(\mathbb{E}(D(X)))^2 \times Var(D(X))$, with $h'(\mathbb{E}(D(X)))=h'(µ)=2µ^2$ and $Var(D(X))=Var(X)=\sigma^2$
+
+Thus it follows $v(F)=2µ^2\times\sigma^2$ and we come to the conclusion:
+
+By the Delta method $\sqrt{n} \times (T(\hat{F})_{n}-T(F)) \xrightarrow{d} \mathcal{N}(0,v(F))$, the estimator is asymptotically normal with the asymptotic variance $v(F)=2µ^2*\sigma^2$.
+
+
 ## Exercise 5
 
 
