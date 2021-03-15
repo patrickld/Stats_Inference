@@ -13,13 +13,11 @@ Thus $F^{−1}$ will also follow the $Uniform[0,1]$ distribution.
 
 (b) Propose an algorithm to sample from the Exponential distribution $Exp(λ)$ using a sample from the uniform distribution $U(0,1)$.
 
-There are different approaches to sample an Exponential distribution from a $Uniform[0,1]$ distribution 
-1. A sample of size n can be drawn from $Uniform[0,1]$ using runif in R
-2. Using the result of (a) and a sample as argument for the inverse distribution function of the Exponential distribution. 
+If $U~Exp(λ)$ and when $F_U(u)$ is the cumulative distribution function of the exponential distribution,for $u<0$ it follows $F(U)=0$, and for $u≥0$ it follows $F(U)=\int_{0}^{u}\,λexp(-λu)du \leftrightarrow F(U)=1-exp(-λu)$
 
-When $F_Y(y)$ is the cumulative distribution function of the exponential distribution, we have by definition $F_Y(y)=1-exp(-\lambda y)$ if $y≥0$. One can find $F_Y^{-1}(U)=\frac{-1}{\lambda ln(1-U)}$
+To sample an Exponential distribution from a $Uniform[0,1]$ distribution, we first generate a sample from a $Uniform[0,1]$ distribution and then use the sample as argument for the inverse function of the Exponential distribution. 
 
-Assume $Y$ is an exponential random variable with rate parameter $λ = 5$. The probability density
+Solving for the inverse of $F$, we receive $F^{-1}(U)=\frac{-ln(1-U)}{\lambda }$
 
 
 (c) Implement this algorithm in R, and use it to generate a 1000 -sample distributed according to $Exp(λ)$. Compare the distribution of the sample to $Exp(λ)$ using a graph.
